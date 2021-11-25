@@ -1,5 +1,6 @@
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" style="color:white;">Ricky-And-Morty Heroes</a>
+  <a class="navbar-brand" style="color:white; font-family: 'Haettenschweiler'; font-size: xx-large;font-weight: normal">Ricky-And-Morty Heroes</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
   <span class="navbar-toggler-icon"></span>
   </button>
@@ -12,24 +13,36 @@
   </div>
 </nav>
 
+<div class="container" ><button type="button" class="btn btn-secondary" (click)="showlearn()"> Learn more about heroes</button>
+</div>
+<br>
 <div class="container" id="main-container">
-<div class="row">
-  <div *ngFor="let hero of heroes" class="col-md-6 col-xl-3">
-     <div class="card m-b-30">
+<div  class="row">
+  <div *ngFor="let hero of heroes" class="col-md-6 col-xl-3" >
+     <div class="card m-b-30"  >
         <div class="card-body row">
            <div class="col-6">
               <a href=""><img src="{{hero?.image}}" alt="" class="img-fluid rounded-circle w-60"></a>
            </div>
            <div class="col-6 card-title align-self-center mb-0">
-              <h5>{{hero?.name}}</h5>
-              <p class="m-0">Status: {{hero?.status}}</p>
+              <h5><a>{{hero?.name}}</a></h5>
            </div>
         </div>
+       <form *ngIf="isShow">
         <ul class="list-group list-group-flush">
-           <li class="list-group-item"><i class="fa fa-envelope float-right"></i>Origin : {{hero?.origin}}</li>
-           <li class="list-group-item"><i class="fa fa-phone float-right"></i>Gender : {{hero?.gender}}</li>
-        </ul>
+          <li class="list-group-item"><i class="fa fa-envelope float-right"></i> <font style="font-weight:bold">Status :</font>  {{hero?.status}}</li>
+          <li class="list-group-item"><i class="fa fa-envelope float-right"></i> <font style="font-weight:bold">Origin :</font>  {{hero?.origin}}</li>
+           <li class="list-group-item"><i class="fa fa-phone float-right"></i><font style="font-weight:bold">Gender :</font> {{hero?.gender}}</li>
+           <li class="list-group-item"><i class="fa fa-envelope float-right"></i> <font style="font-weight:bold">Species :</font>  {{hero?.species}}</li>
+           <li class="list-group-item"><i class="fa fa-phone float-right"></i><font style="font-weight:bold">Type :</font> {{hero?.type}}</li>
+           <li class="list-group-item"><i class="fa fa-envelope float-right"></i> <font style="font-weight:bold">Created :</font>  {{hero?.created}}</li>
+         </ul>
+       </form>
      </div>
+     </div>
+
   </div>
+
+
 </div>
-</div>
+

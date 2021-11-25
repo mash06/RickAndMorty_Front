@@ -10,7 +10,7 @@ import {Hero} from './hero';
 })
 export class AppComponent implements OnInit {
   public heroes: Hero[];
-
+  public hero:Hero;
   constructor(private employeeService: EmployeeService){}
 
   ngOnInit() {
@@ -32,6 +32,7 @@ export class AppComponent implements OnInit {
 
   public searchEmployees(key: string): void {
     console.log(key);
+
     const results: Hero[] = [];
     for (const hero of this.heroes) {
       if (hero.name.toLowerCase().indexOf(key.toLowerCase()) !== -1
@@ -45,6 +46,10 @@ export class AppComponent implements OnInit {
     if (results.length === 0 || !key) {
       this.getHeroes();
     }
+    this.showlearn();
   }
 
+
+  isShow:boolean=false;
+  showlearn(){this.isShow=!this.isShow;}
 }

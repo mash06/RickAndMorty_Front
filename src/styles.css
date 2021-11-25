@@ -1,8 +1,11 @@
 @import 'https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css';
 @import 'https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css';
 
-body {
-  background: #f5f5f5;
+body{
+  background: url("https://hipfonts.com/wp-content/uploads/2021/01/Rick-and-Morty-logo.jpg")
+}
+.size{
+  background-size: 97% ;
 }
 
 a {
