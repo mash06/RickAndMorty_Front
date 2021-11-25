@@ -10,11 +10,11 @@ import {Hero} from './hero';
 })
 export class AppComponent implements OnInit {
   public heroes: Hero[];
-  public hero:Hero;
   constructor(private employeeService: EmployeeService){}
 
   ngOnInit() {
     this.getHeroes();
+    this.heroes.forEach(hero => hero.showOnScreen = false)
     console.log(this.heroes)
   }
 
@@ -46,10 +46,14 @@ export class AppComponent implements OnInit {
     if (results.length === 0 || !key) {
       this.getHeroes();
     }
-    this.showlearn();
   }
 
+  public showLearn(hero: Hero) {
+    hero.showOnScreen = !hero.showOnScreen;
+  }
 
-  isShow:boolean=false;
-  showlearn(){this.isShow=!this.isShow;}
+  public showAll() {
+    this.heroes.forEach(hero => hero.showOnScreen = !hero.showOnScreen)
+  }
+
 }

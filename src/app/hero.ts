@@ -9,5 +9,6 @@ export interface Hero {
   image: string;
   url: string;
   created: string;
+  showOnScreen : boolean;
 }
 
