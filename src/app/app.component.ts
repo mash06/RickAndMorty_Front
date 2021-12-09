@@ -48,6 +48,7 @@ export class AppComponent implements OnInit {
     }
   }
 
+
   public showLearn(hero: Hero) {
     hero.showOnScreen = !hero.showOnScreen;
   }
