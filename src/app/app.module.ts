@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { EmployeeService } from './employee.service';
 import { HttpClientModule } from '@angular/common/http';import { FormsModule } from '@angular/forms';
-import {MaterialModule} from '@angular/material';
 
 
 @NgModule({
@@ -13,8 +12,7 @@ import {MaterialModule} from '@angular/material';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule, FormsModule,
-    MaterialModule
+    HttpClientModule, FormsModule
   ],
   providers: [EmployeeService],
   bootstrap: [AppComponent]
