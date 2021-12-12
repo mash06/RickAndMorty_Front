@@ -1,6 +1,6 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" style="color:white; font-family: 'Haettenschweiler'; font-size: xx-large;font-weight: normal">Ricky-And-Morty Heroes</a>
+  <a class="navbar-brand" style="color:white; font-family: 'Haettenschweiler'; font-size: xx-large;font-weight: normal">Rick-And-Morty Heroes</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
   <span class="navbar-toggler-icon"></span>
   </button>
@@ -9,26 +9,50 @@
      <form class="form-inline my-2 my-lg-0">
         <input type="search" (ngModelChange)="searchEmployees(key.value)" #key="ngModel" ngModel
          name="key" id="searchName" class="form-control mr-sm-2" placeholder="Search employees..." required>
+
      </form>
+
+   <select >
+     <option value="1">Female</option>
+     <option value="2">Male</option>
+   </select>
   </div>
+
+
 </nav>
+
+
+
 
 <div class="container2" ><button type="button" class="btn btn-secondary" (click)="showAll()"> Learn more about all heroes</button></div>
 <br>
 <div class="container" id="main-container">
 <div  class="row">
+
   <div *ngFor="let hero of heroes" class="col-md-6 col-xl-3" >
+
      <div class="card m-b-30"  >
         <div class="card-body row">
            <div class="col-6">
              <div class="modalContent modalToggle">
-              <a href=""><img src="{{hero?.image}}" alt="" class="img-fluid rounded-circle w-60"></a>
+               <button class="btn btn-outline-primary" (click)="open(content)" > <img src="{{hero?.image}}" alt="" class="img-fluid  w-80"></button>
+               <ng-template #content let-modal>
+                 <div class="modal-header">
+                   <h4 class="modal-title" id="modal-basic-title">{{hero.name}}</h4>
+                   <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                     <span aria-hidden="true">&times;</span>
+                   </button>
+                 </div>
+                 <img src="{{hero?.image}}" alt="">
+               </ng-template>
              </div>
            </div>
            <div class="col-6 card-title align-self-center mb-0">
               <h5><a>{{hero?.name}}</a></h5>
            </div>
         </div>
+
+
        <div class="container" >
          <button type="button" class="btn btn-secondary" (click)="showLearn(hero)"> Learn more about hero</button>
        </div>
