@@ -3,6 +3,7 @@ import { EmployeeService } from './employee.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import {Hero} from './hero';
 import{ModalDismissReasons,NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {GenderInterface} from './gender.interface';
 
 @Component({
   selector: 'app-root',
@@ -30,15 +31,37 @@ export class AppComponent implements OnInit {
     });
 
   }
-  taxRateGridChange(value) {
-    let textVal;
-    if (value) {
-      const selectedOption = this.heroes.find((entity) => entity.gender === value);
-      textVal = selectedOption ? selectedOption.gender : null;
-    } else {
-      textVal = null;
+  public gender:Array<GenderInterface>=[{id:0,name:"None"},{id:1,name:"Female"},{id:2,name:"Male"}]
+  public gid:number;
+
+  public gendi(val:number): void{
+    console.log(val);
+    const results: Hero[] = [];
+    if (val==1){
+      for (const hero of this.heroes) {
+        if (hero.gender=="Female") {
+          results.push(hero);
+        }
+      }
     }
+    if (val==2){
+      for (const hero of this.heroes) {
+        if (hero.gender=="Male") {
+          results.push(hero);
+        }
+      }
+    }
+
+    this.heroes = results;
+
+    if (!val) {
+      this.getHeroes();
+    }
+
   }
+
+
+
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';

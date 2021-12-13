@@ -4,18 +4,15 @@
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
   <span class="navbar-toggler-icon"></span>
   </button>
+
   <div class="collapse navbar-collapse" id="navbarColor02">
      <ul class="navbar-nav mr-auto"></ul>
      <form class="form-inline my-2 my-lg-0">
         <input type="search" (ngModelChange)="searchEmployees(key.value)" #key="ngModel" ngModel
-         name="key" id="searchName" class="form-control mr-sm-2" placeholder="Search employees..." required>
+               name="key" id="searchName" class="form-control mr-sm-2" placeholder="Search employees..." required>
 
      </form>
 
-   <select >
-     <option value="1">Female</option>
-     <option value="2">Male</option>
-   </select>
   </div>
 
 
@@ -25,6 +22,14 @@
 
 
 <div class="container2" ><button type="button" class="btn btn-secondary" (click)="showAll()"> Learn more about all heroes</button></div>
+<br>
+<div class="container2">
+
+       <select  [(ngModel)]="gid" (ngModelChange)="gendi(gid)">
+       <option *ngFor="let gend of gender " [ngValue]="gend.id"  >{{gend.name}}</option>
+       </select>
+
+</div>
 <br>
 <div class="container" id="main-container">
 <div  class="row">
