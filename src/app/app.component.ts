@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { EmployeeService } from './employee.service';
+import { EmployeeService } from './home/employee.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import {Hero} from './hero';
-import{ModalDismissReasons,NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {GenderInterface} from './interfaces/gender.interface';
-import {StatusInterface} from './interfaces/status.interface';
-import {SpeciesInterface} from './interfaces/species.interface';
+import {Hero} from './home/hero';
+import {ModalDismissReasons,NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {GenderInterface} from './home/interfaces/gender.interface';
+import {StatusInterface} from './home/interfaces/status.interface';
+import {SpeciesInterface} from './home/interfaces/species.interface';
 
 @Component({
   selector: 'app-root',
