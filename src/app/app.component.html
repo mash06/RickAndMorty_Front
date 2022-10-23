@@ -1,26 +1,8 @@
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" style="color:white; font-family: 'Haettenschweiler';
-   font-size: xx-large;font-weight: normal">Rick-And-Morty Heroes</a>
-  `<div>
-  <a routerLink="/episode">Эпизоды</a>
-  <a routerLink="/">Герои</a>
-<router-outlet></router-outlet>
-</div>`
-  <button class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarColor02" aria-controls="navbarColor02"
-                   aria-expanded="false" aria-label="Toggle navigation">
-  <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarColor02">
-     <ul class="navbar-nav mr-auto"></ul>
-     <form class="form-inline my-2 my-lg-0">
-        <input type="search" (ngModelChange)="searchEmployees(key.value)"
-               #key="ngModel" ngModel name="key" id="searchName"
-               class="form-control mr-sm-2" placeholder="Search heroes..." required>
-     </form>
-  </div>
-</nav>
+<div class="container">
+
+  <router-outlet></router-outlet>
+</div>
 
 
 

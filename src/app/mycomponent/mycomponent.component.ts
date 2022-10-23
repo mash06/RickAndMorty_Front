@@ -61,10 +61,11 @@
 
 
 import {Component, Input, OnInit} from '@angular/core';
-import {Episode} from '../hero';
-import {EmployeeService} from '../employee.service';
+import {Episode} from './Episode';
 import {HttpErrorResponse} from '@angular/common/http';
 import{ModalDismissReasons,NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {EpisodeService} from './episode.service';
+
 
 @Component({
   selector: 'app-mycomponent',
@@ -72,17 +73,17 @@ import{ModalDismissReasons,NgbModal} from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./mycomponent.component.css']
 })
 export class MycomponentComponent implements OnInit {
-  public heroes: Hero[];
-  public list: Hero[];
+  public episodes: Episode[];
+  public list: Episode[];
   closeResult:String;
   constructor(
     private modalService:NgbModal,
-    private employeeService: EmployeeService){}
+    private episodeService: EpisodeService){}
 
   ngOnInit() {
-    this.getHeroes();
-    this.heroes.forEach(hero => hero.showOnScreen = false);
-    console.log(this.heroes)
+    this.getEpisodes();
+    this.episodes.forEach(episode => episode.showOnScreen = false);
+    console.log(this.episodes)
 
   }
   open(content) {
@@ -91,6 +92,20 @@ export class MycomponentComponent implements OnInit {
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
+
+  }
+
+  public getEpisodes(): void {
+    this.episodeService.getEpisode().subscribe(
+      (response: Episode[]) => {
+        this.episodes = response;
+        this.list = response;
+        console.log(this.episodes);
+      },
+      (error: HttpErrorResponse) => {
+        console.log(error.message);
+      }
+    );
 
   }
 

@@ -8,9 +8,9 @@ import {StatusInterface} from './interfaces/status.interface';
 import {SpeciesInterface} from './interfaces/species.interface';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: '../home.component.html',
-  styleUrls: ['../home.component.css']
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
   public heroes: Hero[];
