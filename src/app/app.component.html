@@ -1,50 +1,65 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" style="color:white; font-family: 'Haettenschweiler'; font-size: xx-large;font-weight: normal">Rick-And-Morty Heroes</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+  <a class="navbar-brand" style="color:white; font-family: 'Haettenschweiler';
+   font-size: xx-large;font-weight: normal">Rick-And-Morty Heroes</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarColor02" aria-controls="navbarColor02"
+                   aria-expanded="false" aria-label="Toggle navigation">
   <span class="navbar-toggler-icon"></span>
   </button>
-
   <div class="collapse navbar-collapse" id="navbarColor02">
      <ul class="navbar-nav mr-auto"></ul>
      <form class="form-inline my-2 my-lg-0">
-        <input type="search" (ngModelChange)="searchEmployees(key.value)" #key="ngModel" ngModel
-               name="key" id="searchName" class="form-control mr-sm-2" placeholder="Search employees..." required>
-
+        <input type="search" (ngModelChange)="searchEmployees(key.value)"
+               #key="ngModel" ngModel name="key" id="searchName"
+               class="form-control mr-sm-2" placeholder="Search heroes..." required>
      </form>
-
   </div>
-
-
 </nav>
 
 
 
 
-<div class="container2" ><button type="button" class="btn btn-secondary" (click)="showAll()"> Learn more about all heroes</button></div>
-<br>
-<div class="container2">
-
-       <select  [(ngModel)]="gid" (ngModelChange)="gendi(gid)">
-       <option *ngFor="let gend of gender " [ngValue]="gend.id"  >{{gend.name}}</option>
-       </select>
-
+<div class="container2" ><button type="button" class="btn btn-secondary" (click)="showAll()">
+                                                    Learn more about all heroes</button>
 </div>
 <br>
+<div class="container2"><a class="navbar-brand" style="color:white; font-family: 'Haettenschweiler';
+        font-size: x-large;font-weight: normal"> Количество героев на странице: {{this.countpart}} </a>
+</div>
+<div class="container2">
+  <a class="navbar-brand" style="color:white; font-family: 'Haettenschweiler'; font-size: xx-large;font-weight: normal">Gender: </a>
+
+      <select [(ngModel)]="gid" (ngModelChange)="GenderMethod(gid)" class="marg">
+           <option *ngFor="let gend of gender " [ngValue]="gend.id">{{gend.name}}</option>
+      </select>
+  <a class="navbar-brand" style="color:white; font-family: 'Haettenschweiler'; font-size: x-large;font-weight: normal">Status: </a>
+
+  <select [(ngModel)]="stid" (ngModelChange)="StatusMethod(stid)" class="marg">
+       <option *ngFor="let stat of status " [ngValue]="stat.id"  >{{stat.status}}</option>
+       </select>
+  <a class="navbar-brand" style="color:white; font-family: 'Haettenschweiler'; font-size: x-large;font-weight: normal">Species: </a>
+
+  <select [(ngModel)]="spid" (ngModelChange)="SpeciesMethod(spid)" class="marg">
+       <option *ngFor="let spec of species " [ngValue]="spec.id"  >{{spec.species}}</option>
+       </select>
+</div>
+<br>
+
 <div class="container" id="main-container">
 <div  class="row">
-
   <div *ngFor="let hero of heroes" class="col-md-6 col-xl-3" >
-
      <div class="card m-b-30"  >
         <div class="card-body row">
            <div class="col-6">
              <div class="modalContent modalToggle">
-               <button class="btn btn-outline-primary" (click)="open(content)" > <img src="{{hero?.image}}" alt="" class="img-fluid  w-80"></button>
+               <button class="btn btn-outline-primary" (click)="open(content)" >
+                    <img src="{{hero?.image}}" alt="" class="img-fluid  w-80"></button>
                <ng-template #content let-modal>
                  <div class="modal-header">
                    <h4 class="modal-title" id="modal-basic-title">{{hero.name}}</h4>
-                   <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                   <button type="button" class="close" aria-label="Close"
+                                   (click)="modal.dismiss('Cross click')">
                      <span aria-hidden="true">&times;</span>
                    </button>
                  </div>
@@ -58,9 +73,31 @@
         </div>
 
 
+
        <div class="container" >
-         <button type="button" class="btn btn-secondary" (click)="showLearn(hero)"> Learn more about hero</button>
+         <button type="button" class="btn btn-secondary" (click)="open(content1)"> Learn more about hero</button>
        </div>
+       <br>
+       <ng-template #content1 let-modal>
+         <div class="modal-header">
+           <h4 class="modal-title" >{{hero.name}}</h4>
+           <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+             <span aria-hidden="true">&times;</span>
+           </button>
+         </div>
+         <div class="col-6" >
+         <img src="{{hero?.image}}"  alt="" class="img-fluid rounded-circle w-80">
+         </div>
+         <ul class="list-group list-group-flush">
+           <li class="list-group-item" ><i class="fa fa-envelope float-left"></i> <font style="font-weight:bold">Status :</font>  {{hero?.status}}</li>
+           <li class="list-group-item"><i class="fa fa-envelope float-left"></i> <font style="font-weight:bold">Origin :</font>  {{hero?.origin}}</li>
+           <li class="list-group-item"><i class="fa fa-phone float-left"></i><font style="font-weight:bold">Gender :</font> {{hero?.gender}}</li>
+           <li class="list-group-item"><i class="fa fa-envelope float-left"></i> <font style="font-weight:bold">Species :</font>  {{hero?.species}}</li>
+           <li class="list-group-item"><i class="fa fa-phone float-left"></i><font style="font-weight:bold">Type :</font> {{hero?.type}}</li>
+           <li class="list-group-item"><i class="fa fa-envelope float-left"></i> <font style="font-weight:bold">Created :</font>  {{hero?.created}}</li>
+           <li>
+         </ul>
+       </ng-template>
        <br>
        <div *ngIf="hero.showOnScreen">
          <ul class="list-group list-group-flush">
@@ -75,9 +112,6 @@
        </div>
      </div>
      </div>
-
   </div>
-
-
 </div>
 

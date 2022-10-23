@@ -3,7 +3,9 @@ import { EmployeeService } from './employee.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import {Hero} from './hero';
 import{ModalDismissReasons,NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {GenderInterface} from './gender.interface';
+import {GenderInterface} from './interfaces/gender.interface';
+import {StatusInterface} from './interfaces/status.interface';
+import {SpeciesInterface} from './interfaces/species.interface';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +14,7 @@ import {GenderInterface} from './gender.interface';
 })
 export class AppComponent implements OnInit {
   public heroes: Hero[];
+  public list: Hero[];
   closeResult:String;
   constructor(
     private modalService:NgbModal,
@@ -20,8 +23,8 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.getHeroes();
     this.heroes.forEach(hero => hero.showOnScreen = false);
-    this.heroes.forEach(hero => hero.showimage = false);
     console.log(this.heroes)
+
   }
   open(content) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
@@ -31,36 +34,6 @@ export class AppComponent implements OnInit {
     });
 
   }
-  public gender:Array<GenderInterface>=[{id:0,name:"None"},{id:1,name:"Female"},{id:2,name:"Male"}]
-  public gid:number;
-
-  public gendi(val:number): void{
-    console.log(val);
-    const results: Hero[] = [];
-    if (val==1){
-      for (const hero of this.heroes) {
-        if (hero.gender=="Female") {
-          results.push(hero);
-        }
-      }
-    }
-    if (val==2){
-      for (const hero of this.heroes) {
-        if (hero.gender=="Male") {
-          results.push(hero);
-        }
-      }
-    }
-
-    this.heroes = results;
-
-    if (!val) {
-      this.getHeroes();
-    }
-
-  }
-
-
 
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
@@ -71,16 +44,117 @@ export class AppComponent implements OnInit {
       return `with: ${reason}`;
     }
   }
+  public countpart:number;
+  public gender:Array<GenderInterface>=[{id:0,name:"None"},{id:1,name:"Female"},{id:2,name:"Male"}]
+  public gid:number;
+
+  public GenderMethod(val:number): void{
+    console.log(val);
+    const results: Hero[] = [];
+
+    if (val==1){
+      for (const hero of this.list) {
+        if (hero.gender=="Female") {
+          results.push(hero);
+        }
+      }
+    }
+    if (val==2){
+      for (const hero of this.list) {
+        if (hero.gender=="Male") {
+          results.push(hero);
+        }
+      }
+    }
+    this.heroes = results;
+    this.countpart=results.length;
+
+    if (!val) {
+      this.getHeroes();
+      this.countpart=results.length;
+    }
+
+  }
+
+  public status:Array<StatusInterface>=[{id:0,status:"None"},
+                                        {id:1,status:"Alive"},
+                                        {id:2,status:"Dead"},
+                                        {id:3,status:"unknown"}]
+  public stid:number;
+
+  public StatusMethod(val:number): void{
+    console.log(val);
+    const results: Hero[] = [];
+    if (val==1){
+      for (const hero of this.list) {
+        if (hero.status=="Alive") {
+          results.push(hero);
+        }
+      }
+    }
+    if (val==2){
+      for (const hero of this.list) {
+        if (hero.status=="Dead") {
+          results.push(hero);}
+      }
+    }
+    if (val==3){
+      for (const hero of this.list) {
+        if (hero.status=="unknown") {
+          results.push(hero); }
+      }
+    }
+    this.heroes = results;
+    this.countpart=results.length;
+    if (!val) {
+      this.getHeroes();
+      this.countpart=results.length;
+    }
+
+  }
+
+  public species:Array<SpeciesInterface>=[{id:0,species:"None"},{id:1,species:"Human"},{id:2,species:"Alien"}]
+  public spid:number;
+  public SpeciesMethod(val:number): void{
+    console.log(val);
+    const results: Hero[] = [];
+    if (val==1){
+      for (const hero of this.list) {
+        if (hero.species=="Human") {
+          results.push(hero);
+        }
+      }
+    }
+    if (val==2){
+      for (const hero of this.list) {
+        if (hero.species=="Alien") {
+          results.push(hero);
+        }
+      }
+    }
+    this.heroes = results;
+    this.countpart=results.length;
+    if (!val) {
+      this.getHeroes();
+      this.countpart=results.length;
+    }
+  }
+
+
+
   public getHeroes(): void {
     this.employeeService.getHeroes().subscribe(
       (response: Hero[]) => {
         this.heroes = response;
+        this.list = response;
+        this.countpart=response.length;
         console.log(this.heroes);
       },
       (error: HttpErrorResponse) => {
         console.log(error.message);
       }
     );
+
   }
 
   public searchEmployees(key: string): void {
@@ -96,20 +170,14 @@ export class AppComponent implements OnInit {
       }
     }
     this.heroes = results;
+    this.countpart=results.length;
     if (results.length === 0 || !key) {
       this.getHeroes();
+
     }
   }
 
-  public showimage(hero:Hero){
-      hero.showimage = !hero.showimage;
 
-  }
-
-
-  public showLearn(hero: Hero) {
-    hero.showOnScreen = !hero.showOnScreen;
-  }
 
   public showAll() {
     this.heroes.forEach(hero => hero.showOnScreen = !hero.showOnScreen)

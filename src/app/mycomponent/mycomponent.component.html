@@ -1,18 +1,1 @@
-<div *ngFor="let hero of heroes" class="col-md-6 col-xl-3" > <button class="btn btn-outline-primary" (click)="open(content,hero)" > Full image</button>
-<ng-template #content let-modal>
-  <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title"></h4>
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
 
-
-
-          <img src="{{hero?.image}}" alt="">
-
-
-
-
-</ng-template>
-</div>
