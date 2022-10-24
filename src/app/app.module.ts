@@ -10,11 +10,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {EpisodeService} from './mycomponent/episode.service';
 import {RouterModule} from '@angular/router';
 import {HomeComponent} from './home/home.component';
+import {LocationComponent} from './Location/Location.component';
+import {LocationService} from './Location/location.service';
 
 
 const routes = [
   { path: '', component: HomeComponent},
-  { path: 'episode', component: MycomponentComponent}]
+  { path: 'episode', component: MycomponentComponent},
+  { path: 'location', component: LocationComponent}]
 
 
 
@@ -22,14 +25,15 @@ const routes = [
   declarations: [
     AppComponent,
     HomeComponent,
-    MycomponentComponent
+    MycomponentComponent,
+    LocationComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule, FormsModule, NgbModule, RouterModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [EmployeeService,EpisodeService],
+  providers: [EmployeeService,EpisodeService,LocationService],
   bootstrap: [AppComponent,MycomponentComponent]
 })
 export class AppModule { }
