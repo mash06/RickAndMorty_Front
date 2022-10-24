@@ -60,7 +60,7 @@
 // }
 
 
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Episode} from './Episode';
 import {HttpErrorResponse} from '@angular/common/http';
 import{ModalDismissReasons,NgbModal} from '@ng-bootstrap/ng-bootstrap';

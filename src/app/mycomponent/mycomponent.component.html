@@ -1,2 +1,51 @@
 
-<a routerLink="">Главнаяssss</a>
+<div class="container" id="main-container">
+  <div  class="row">
+    <div *ngFor="let episode of episodes" class="col-md-6 col-xl-3" >
+      <div class="card m-b-30"  >
+        <div class="card-body row">
+          <div class="col-6">
+
+          </div>
+          <div class="col-6 card-title align-self-center mb-0">
+            <h5><a>{{episode?.name}}</a></h5>
+          </div>
+        </div>
+
+
+
+        <div class="container" >
+          <button type="button" class="btn btn-secondary" (click)="open(content1)"> Learn more about hero</button>
+        </div>
+        <br>
+        <ng-template #content1 let-modal>
+          <div class="modal-header">
+            <h4 class="modal-title" >{{episode.name}}</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item" ><i class="fa fa-envelope float-left"></i> <font style="font-weight:bold">Status :</font>  {{episode?.air_date}}</li>
+            <li class="list-group-item"><i class="fa fa-envelope float-left"></i> <font style="font-weight:bold">Origin :</font>  {{episode?.episode}}</li>
+            <li class="list-group-item"><i class="fa fa-phone float-left"></i><font style="font-weight:bold">Gender :</font> {{episode?.created}}</li>
+            <li class="list-group-item"><i class="fa fa-phone float-left"></i><font style="font-weight:bold">Gender :</font> {{episode?.characters}}</li>
+            <li>
+          </ul>
+        </ng-template>
+        <br>
+        <div *ngIf="episode.showOnScreen">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item" ><i class="fa fa-envelope float-left"></i> <font style="font-weight:bold">Status :</font>  {{episode?.air_date}}</li>
+            <li class="list-group-item"><i class="fa fa-envelope float-left"></i> <font style="font-weight:bold">Origin :</font>  {{episode?.episode}}</li>
+            <li class="list-group-item"><i class="fa fa-phone float-left"></i><font style="font-weight:bold">Gender :</font> {{episode?.created}}</li>
+            <li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

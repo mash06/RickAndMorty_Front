@@ -8,7 +8,7 @@ import {Episode} from './Episode';
 @Injectable({providedIn: 'root'})
 export class EpisodeService {
 
-  private apiServerUrl = environment.apiBaseUrl;
+  private apiServerUrl = environment.apiBaseUrl + "/episode";
 
   constructor(private http: HttpClient){}
 

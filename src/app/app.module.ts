@@ -14,7 +14,7 @@ import {HomeComponent} from './home/home.component';
 
 const routes = [
   { path: '', component: HomeComponent},
-  { path: '/episode', component: MycomponentComponent}]
+  { path: 'episode', component: MycomponentComponent}]
 
 
 
@@ -26,7 +26,7 @@ const routes = [
   ],
   imports: [
     BrowserModule,
-    HttpClientModule, FormsModule, NgbModule,
+    HttpClientModule, FormsModule, NgbModule, RouterModule,
     RouterModule.forRoot(routes)
   ],
   providers: [EmployeeService,EpisodeService],

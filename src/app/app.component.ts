@@ -183,4 +183,5 @@ export class AppComponent {
   //   this.heroes.forEach(hero => hero.showOnScreen = !hero.showOnScreen)
   // }
 
+
 }
