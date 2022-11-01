@@ -1,0 +1,43 @@
+
+<div class="container" id="main-container">
+  <div  class="row">
+    <div *ngFor="let location of locations" class="col-md-4" >
+      <div class="card2"  >
+        <div class="card-body row">
+
+            <h5><a class="container2">{{location?.name}}</a></h5>
+
+        </div>
+
+
+
+        <div class="container2">
+          <button type="button" class="btn btn-secondary" (click)="open(content1)"> Learn more about location</button>
+        </div>
+        <br>
+        <ng-template #content1 let-modal>
+          <div class="modal-header">
+            <h4 class="modal-title" >{{location.name}}</h4>
+
+          </div>
+
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item" ><i class="fa fa-envelope float-left"></i> <font style="font-weight:bold">Type :</font>  {{location?.type}}</li>
+            <li class="list-group-item"><i class="fa fa-envelope float-left"></i> <font style="font-weight:bold">Dimension :</font>  {{location?.dimension}}</li>
+            <li class="list-group-item"><i class="fa fa-phone float-left"></i><font style="font-weight:bold">Created :</font> {{location?.created}}</li>
+            <li>
+          </ul>
+        </ng-template>
+        <br>
+        <div *ngIf="location.showOnScreen">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item" ><i class="fa fa-envelope float-left"></i> <font style="font-weight:bold">Type :</font>  {{location?.type}}</li>
+            <li class="list-group-item"><i class="fa fa-envelope float-left"></i> <font style="font-weight:bold">dimension :</font>  {{location?.dimension}}</li>
+            <li class="list-group-item"><i class="fa fa-phone float-left"></i><font style="font-weight:bold">created :</font> {{location?.created}}</li>
+            <li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

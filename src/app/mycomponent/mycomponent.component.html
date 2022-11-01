@@ -1,7 +1,7 @@
 
 <div class="container" id="main-container">
   <div  class="row">
-    <div *ngFor="let episode of episodes" class="col-md-6 col-xl-3" >
+    <div *ngFor="let episode of episodes" class="col-md-4" >
       <div class="card m-b-30"  >
         <div class="card-body row">
           <div class="col-6">
@@ -15,7 +15,7 @@
 
 
         <div class="container" >
-          <button type="button" class="btn btn-secondary" (click)="open(content1)"> Learn more about hero</button>
+          <button type="button" class="btn btn-secondary" (click)="open(content1)"> Learn more about episode</button>
         </div>
         <br>
         <ng-template #content1 let-modal>
@@ -27,19 +27,19 @@
           </div>
 
           <ul class="list-group list-group-flush">
-            <li class="list-group-item" ><i class="fa fa-envelope float-left"></i> <font style="font-weight:bold">Status :</font>  {{episode?.air_date}}</li>
-            <li class="list-group-item"><i class="fa fa-envelope float-left"></i> <font style="font-weight:bold">Origin :</font>  {{episode?.episode}}</li>
-            <li class="list-group-item"><i class="fa fa-phone float-left"></i><font style="font-weight:bold">Gender :</font> {{episode?.created}}</li>
-            <li class="list-group-item"><i class="fa fa-phone float-left"></i><font style="font-weight:bold">Gender :</font> {{episode?.characters}}</li>
+            <li class="list-group-item" ><i class="fa fa-envelope float-left"></i> <font style="font-weight:bold">Air date :</font>  {{episode?.air_date}}</li>
+            <li class="list-group-item"><i class="fa fa-envelope float-left"></i> <font style="font-weight:bold">Episode :</font>  {{episode?.episode}}</li>
+            <li class="list-group-item"><i class="fa fa-phone float-left"></i><font style="font-weight:bold">Created :</font> {{episode?.created}}</li>
+            <li class="list-group-item"><i class="fa fa-phone float-left"></i><font style="font-weight:bold">Characters :</font> {{episode?.characters}}</li>
             <li>
           </ul>
         </ng-template>
         <br>
         <div *ngIf="episode.showOnScreen">
           <ul class="list-group list-group-flush">
-            <li class="list-group-item" ><i class="fa fa-envelope float-left"></i> <font style="font-weight:bold">Status :</font>  {{episode?.air_date}}</li>
-            <li class="list-group-item"><i class="fa fa-envelope float-left"></i> <font style="font-weight:bold">Origin :</font>  {{episode?.episode}}</li>
-            <li class="list-group-item"><i class="fa fa-phone float-left"></i><font style="font-weight:bold">Gender :</font> {{episode?.created}}</li>
+            <li class="list-group-item" ><i class="fa fa-envelope float-left"></i> <font style="font-weight:bold">Air date :</font>  {{episode?.air_date}}</li>
+            <li class="list-group-item"><i class="fa fa-envelope float-left"></i> <font style="font-weight:bold">Episode :</font>  {{episode?.episode}}</li>
+            <li class="list-group-item"><i class="fa fa-phone float-left"></i><font style="font-weight:bold">Created :</font> {{episode?.created}}</li>
             <li>
           </ul>
         </div>

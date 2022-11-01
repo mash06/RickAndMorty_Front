@@ -1,23 +1,23 @@
 
-<div class="container2" ><button type="button" class="btn btn-secondary" (click)="showAll()">
+<div class="container2" ><button type="button" class="btn btn-secondary" (click)="showAll()" style="font-family: Montserrat">
   Learn more about all heroes</button>
 </div>
 <br>
-<div class="container2"><a class="navbar-brand" style="color:white; font-family: 'Haettenschweiler';
+<div class="container2"><a class="navbar-brand" style="color:white; font-family: 'Montserrat';
         font-size: x-large;font-weight: normal"> Количество героев на странице: {{this.countpart}} </a>
 </div>
 <div class="container2">
-  <a class="navbar-brand" style="color:white; font-family: 'Haettenschweiler'; font-size: xx-large;font-weight: normal">Gender: </a>
+  <a class="navbar-brand" style="color:white; font-family: 'Montserrat'; font-size: x-large;font-weight: normal">Gender: </a>
 
   <select [(ngModel)]="gid" (ngModelChange)="GenderMethod(gid)" class="marg">
     <option *ngFor="let gend of gender " [ngValue]="gend.id">{{gend.name}}</option>
   </select>
-  <a class="navbar-brand" style="color:white; font-family: 'Haettenschweiler'; font-size: x-large;font-weight: normal">Status: </a>
+  <a class="navbar-brand" style="color:white; font-family: 'Montserrat'; font-size: x-large;font-weight: normal">Status: </a>
 
   <select [(ngModel)]="stid" (ngModelChange)="StatusMethod(stid)" class="marg">
     <option *ngFor="let stat of status " [ngValue]="stat.id"  >{{stat.status}}</option>
   </select>
-  <a class="navbar-brand" style="color:white; font-family: 'Haettenschweiler'; font-size: x-large;font-weight: normal">Species: </a>
+  <a class="navbar-brand" style="color:white; font-family: 'Montserrat'; font-size: x-large;font-weight: normal">Species: </a>
 
   <select [(ngModel)]="spid" (ngModelChange)="SpeciesMethod(spid)" class="marg">
     <option *ngFor="let spec of species " [ngValue]="spec.id"  >{{spec.species}}</option>
@@ -27,7 +27,7 @@
 
 <div class="container" id="main-container">
   <div  class="row">
-    <div *ngFor="let hero of heroes" class="col-md-6 col-xl-3" >
+    <div *ngFor="let hero of heroes" class="col-md-4" >
       <div class="card m-b-30"  >
         <div class="card-body row">
           <div class="col-6">
@@ -54,12 +54,12 @@
 
 
         <div class="container" >
-          <button type="button" class="btn btn-secondary" (click)="open(content1)"> Learn more about hero</button>
+          <button type="button" class="btn btn-secondary" (click)="open(content1)" style="font-family: Montserrat"> Learn more about hero</button>
         </div>
         <br>
         <ng-template #content1 let-modal>
           <div class="modal-header">
-            <h4 class="modal-title" >{{hero.name}}</h4>
+            <h4 class="modal-title" style="font-family: Montserrat">{{hero.name}}</h4>
             <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
               <span aria-hidden="true">&times;</span>
             </button>

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Locations} from './Locations';
+import {Locationss} from './Locationss';
 import {HttpErrorResponse} from '@angular/common/http';
 import{ModalDismissReasons,NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {LocationService} from './location.service';
@@ -11,8 +11,8 @@ import {LocationService} from './location.service';
   styleUrls: ['./Location.component.css']
 })
 export class LocationComponent implements OnInit {
-  public locations: Locations[];
-  public list: Locations[];
+  public locations: Locationss[];
+  public list: Locationss[];
   closeResult:String;
   constructor(
     private modalService:NgbModal,
@@ -35,7 +35,7 @@ export class LocationComponent implements OnInit {
 
   public getLocation(): void {
     this.episodeService.getLocation().subscribe(
-      (response: Locations[]) => {
+      (response: Locationss[]) => {
         this.locations = response;
         this.list = response;
         console.log(this.locations);

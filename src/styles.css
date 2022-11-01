@@ -1,6 +1,6 @@
 @import 'https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css';
 @import 'https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css';
-
+@import url("https://fonts.googleapis.com/css?family=Montserrat:500,700");
 body{
   background: url("https://hipfonts.com/wp-content/uploads/2021/01/Rick-and-Morty-logo.jpg")
 }
@@ -21,6 +21,17 @@ a {
   -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .05);
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .05);
   margin-bottom: 30px;
+
+}
+
+.card2{
+  border: none;
+  -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .05);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .05);
+  margin-bottom: 30px;
+  border-radius: 50px;
+  background-image: url(rick.png);
+  background-size: cover;
 }
 
 .w-60 {
@@ -60,4 +71,29 @@ color: white;
 a {
 color: white;
 }
+.fancyFont {
+  font-family: 'Montserrat';
+  font-weight: 500;
+}
+.container2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
 

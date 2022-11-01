@@ -12,12 +12,17 @@ import {RouterModule} from '@angular/router';
 import {HomeComponent} from './home/home.component';
 import {LocationComponent} from './Location/Location.component';
 import {LocationService} from './Location/location.service';
+import {UserComponent} from './user/user.component';
+import {LoginComponent} from './login/login.component';
 
 
 const routes = [
   { path: '', component: HomeComponent},
   { path: 'episode', component: MycomponentComponent},
-  { path: 'location', component: LocationComponent}]
+  { path: 'location', component: LocationComponent},
+  { path: 'user', component: UserComponent},
+  { path: 'login', component: LoginComponent},
+]
 
 
 
@@ -26,7 +31,9 @@ const routes = [
     AppComponent,
     HomeComponent,
     MycomponentComponent,
-    LocationComponent
+    LocationComponent,
+    UserComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -34,6 +41,6 @@ const routes = [
     RouterModule.forRoot(routes)
   ],
   providers: [EmployeeService,EpisodeService,LocationService],
-  bootstrap: [AppComponent,MycomponentComponent]
+  bootstrap: [AppComponent,MycomponentComponent, LocationComponent, UserComponent,LoginComponent]
 })
 export class AppModule { }
