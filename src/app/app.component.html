@@ -6,42 +6,41 @@
     <li class="nav-item nav-link"><a routerLink="/" style="font-family: Montserrat">Герои</a></li>
     <li class="nav-item nav-link"><a routerLink="/episode" style="font-family: Montserrat" >Эпизоды</a></li>
     <li class="nav-item nav-link"><a routerLink="/location" style="font-family: Montserrat">Локации</a> </li>
-      <div class="modalContent modalToggle">
-        <button class="btn btn-outline-primary" (click)="open(content)" ></button>
+    <li class="nav-item nav-link"><button class="btn btn-outline-primary" routerLink="/user">
+        <img src="user/us2.png" alt="" ></button></li>
+      <!--    <li class="nav-item nav-link"><a routerLink="/user"><img src='user/us2.png' ></a></li>-->
+      <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
 
-        <div class="imgcontainer">
-          <ng-template #content let-modal>
-            <button type="button" class="close" aria-label="Close"
-                    (click)="modal.dismiss('Cross click')">
-              <span aria-hidden="true">&times;</span>
-            </button>
-            <img src="img_avatar2.png" alt="Avatar" class="avatar">
-        </div>
+      <div id="id01" class="modal">
 
-        <div class="container">
-          <label ><b>Username</b></label>
-          <input type="text" placeholder="Enter Username" name="uname" required>
+        <form class="modal-content animate" >
+          <div class="imgcontainer">
+            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span>
 
-          <label ><b>Password</b></label>
-          <input type="password" placeholder="Enter Password" name="psw" required>
+          </div>
 
-          <button type="submit">Login</button>
-          <label>
-            <input type="checkbox" checked="checked" name="remember"> Remember me
-          </label>
-        </div>
+          <div class="container">
+            <label ><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="uname" required>
 
-        <div class="container" style="background-color:#f1f1f1">
-          <button type="button" onclick="" class="cancelbtn">Cancel</button>
-          <span class="psw">Forgot <a href="#">password?</a></span>
-        </div>
+            <label ><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="psw" required>
+
+            <button type="submit">Login</button>
+            <label>
+              <input type="checkbox" checked="checked" name="remember"> Remember me
+            </label>
+          </div>
+
+          <div class="container" style="background-color:#f1f1f1">
+            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+            <span class="psw">Forgot <a href="#">password?</a></span>
+          </div>
+        </form>
+      </div>
 
 
-
-      <li class="nav-item nav-link"><button class="btn btn-outline-primary" routerLink="/user">
-      <img src="user/us2.png" alt="" ></button></li>
-<!--    <li class="nav-item nav-link"><a routerLink="/user"><img src='user/us2.png' ></a></li>-->
-  </ul>
+    </ul>
     </div>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse"
