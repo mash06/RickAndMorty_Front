@@ -3,6 +3,8 @@ import {Locationss} from './Locationss';
 import {HttpErrorResponse} from '@angular/common/http';
 import{ModalDismissReasons,NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {LocationService} from './location.service';
+import {Hero} from '../home/hero';
+import {SpeciesInterface} from '../home/interfaces/species.interface';
 
 
 @Component({
@@ -13,7 +15,9 @@ import {LocationService} from './location.service';
 export class LocationComponent implements OnInit {
   public locations: Locationss[];
   public list: Locationss[];
-  closeResult:String;
+  closeResult:String
+
+  private countpart: number;
   constructor(
     private modalService:NgbModal,
     private episodeService: LocationService){}
@@ -22,6 +26,7 @@ export class LocationComponent implements OnInit {
     this.getLocation();
     this.locations.forEach(location => location.showOnScreen = false);
     console.log(this.locations)
+
 
   }
   open(content) {
@@ -32,6 +37,8 @@ export class LocationComponent implements OnInit {
     });
 
   }
+
+
 
   public getLocation(): void {
     this.episodeService.getLocation().subscribe(
@@ -57,5 +64,26 @@ export class LocationComponent implements OnInit {
     }
   }
 
+
+  public searchLocation(key: string): void {
+    console.log(key);
+
+    const results: Locationss[] = [];
+    for (const loc of this.locations) {
+      if (loc.name.toLowerCase().indexOf(key.toLowerCase()) !== -1) {
+        results.push(loc);
+      }
+    }
+    this.locations = results;
+    this.countpart=results.length;
+    if (results.length === 0 || !key) {
+      this.getLocation();
+
+    }
+  }
+
+  public showAll() {
+    this.locations.forEach(hero => hero.showOnScreen = !hero.showOnScreen)
+  }
 
 }

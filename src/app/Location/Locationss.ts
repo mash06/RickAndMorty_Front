@@ -5,4 +5,5 @@ export interface Locationss {
   dimension : string;
   created: string;
   showOnScreen : boolean;
+  image: string;
 }

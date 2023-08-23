@@ -65,6 +65,7 @@ import {Episode} from './Episode';
 import {HttpErrorResponse} from '@angular/common/http';
 import{ModalDismissReasons,NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {EpisodeService} from './episode.service';
+import {Hero} from '../home/hero';
 
 
 @Component({
@@ -76,6 +77,7 @@ export class MycomponentComponent implements OnInit {
   public episodes: Episode[];
   public list: Episode[];
   closeResult:String;
+  private countpart: number;
   constructor(
     private modalService:NgbModal,
     private episodeService: EpisodeService){}
@@ -119,5 +121,27 @@ export class MycomponentComponent implements OnInit {
     }
   }
 
+
+
+  public searchEpisode(key: string): void {
+    console.log(key);
+
+    const results: Episode[] = [];
+    for (const ep of this.episodes) {
+      if (ep.name.toLowerCase().indexOf(key.toLowerCase()) !== -1) {
+        results.push(ep);
+      }
+    }
+    this.episodes = results;
+    this.countpart=results.length;
+    if (results.length === 0 || !key) {
+      this.getEpisodes();
+
+    }
+  }
+
+  public showAll() {
+    this.episodes.forEach(hero => hero.showOnScreen = !hero.showOnScreen)
+  }
 
 }

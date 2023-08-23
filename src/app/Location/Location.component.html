@@ -1,24 +1,52 @@
-
+<div class="container2"  style="border-radius: 50px" >
+  <form class="form-inline my-2 my-lg-0">
+    <input type="search" (ngModelChange)="searchLocation(key.value)"
+           #key="ngModel" ngModel name="key" id="searchName"
+           class="form-control mr-sm-2" placeholder="Search locations..." required>
+  </form>
+  <button type="button" class="btn btn-secondary" (click)="showAll()" style="font-family: Montserrat">
+    Learn more about all locations</button>
+</div>
+<br>
 <div class="container" id="main-container">
-  <div  class="row">
-    <div *ngFor="let location of locations" class="col-md-4" >
-      <div class="card2"  >
-        <div class="card-body row">
+  <div  class="row" >
+    <div *ngFor="let location of locations; let i=index" class="col-md-4" >
 
-            <h5><a class="container2">{{location?.name}}</a></h5>
-
+      <div class="card"  >
+        <div class="card-body row"  >
+          <div class="col-6">
+            <div class="modalContent modalToggle" >
+              <button    >
+                <img  src="https://e7.pngegg.com/pngimages/193/306/png-clipart-planet-illustration-planet-sky-jupiter-mars-mercury-planets-miscellaneous-purple.png"   (click)="open(content)" alt="" class="img-fluid  w-80"></button>
+              <ng-template #content let-modal>
+              <div class="modal-header">
+                <h4 class="modal-title" id="modal-basic-title">{{location.name}}</h4>
+                <button type="button" class="close" aria-label="Close"
+                        (click)="modal.dismiss('Cross click')">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <img src="https://e7.pngegg.com/pngimages/193/306/png-clipart-planet-illustration-planet-sky-jupiter-mars-mercury-planets-miscellaneous-purple.png" alt="">
+              </ng-template>
+            </div>
+          </div>
+          <div class="col-6 card-title align-self-center mb-0">
+            <h5><a>{{location?.name}}</a></h5>
+          </div>
         </div>
 
 
 
         <div class="container2">
-          <button type="button" class="btn btn-secondary" (click)="open(content1)"> Learn more about location</button>
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item nav-link"><button type="button" class="button" style="vertical-align:middle" (click)="open(content1)" ><span> Learn more about hero</span></button></li>
+          </ul>
         </div>
+
         <br>
         <ng-template #content1 let-modal>
-          <div class="modal-header">
+          <div class="modal-header" >
             <h4 class="modal-title" >{{location.name}}</h4>
-
           </div>
 
           <ul class="list-group list-group-flush">
@@ -29,15 +57,17 @@
           </ul>
         </ng-template>
         <br>
-        <div *ngIf="location.showOnScreen">
+        <div *ngIf="location.showOnScreen" >
           <ul class="list-group list-group-flush">
             <li class="list-group-item" ><i class="fa fa-envelope float-left"></i> <font style="font-weight:bold">Type :</font>  {{location?.type}}</li>
-            <li class="list-group-item"><i class="fa fa-envelope float-left"></i> <font style="font-weight:bold">dimension :</font>  {{location?.dimension}}</li>
-            <li class="list-group-item"><i class="fa fa-phone float-left"></i><font style="font-weight:bold">created :</font> {{location?.created}}</li>
+            <li class="list-group-item"><i class="fa fa-envelope float-left"></i> <font style="font-weight:bold">Dimension :</font>  {{location?.dimension}}</li>
+            <li class="list-group-item"><i class="fa fa-phone float-left"></i><font style="font-weight:bold">Created :</font> {{location?.created}}</li>
             <li>
           </ul>
         </div>
       </div>
+
+
     </div>
   </div>
 </div>

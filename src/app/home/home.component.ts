@@ -6,6 +6,8 @@ import {ModalDismissReasons,NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {GenderInterface} from './interfaces/gender.interface';
 import {StatusInterface} from './interfaces/status.interface';
 import {SpeciesInterface} from './interfaces/species.interface';
+import {Herorep} from '../favorite/herorep';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +16,10 @@ import {SpeciesInterface} from './interfaces/species.interface';
 })
 export class HomeComponent implements OnInit {
   public heroes: Hero[];
+  // public names: String[];
   public list: Hero[];
+  public heror:Herorep;
+
   closeResult:String;
   constructor(
     private modalService:NgbModal,
@@ -22,10 +27,11 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.getHeroes();
+    // this.getname();
     this.heroes.forEach(hero => hero.showOnScreen = false);
     console.log(this.heroes)
-
   }
+
   open(content) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
@@ -48,6 +54,97 @@ export class HomeComponent implements OnInit {
   public gender:Array<GenderInterface>=[{id:0,name:"None"},{id:1,name:"Female"},{id:2,name:"Male"}]
   public gid:number;
 
+
+  public addHero (id: number): void{
+    for (const hero of this.list) {
+      if (hero.id == id) {
+        console.log(hero)
+        this.heror = hero;
+      }
+    }
+     this.employeeService.addHero(this.heror).subscribe(
+      (response: Herorep) => {
+        console.log(response);
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+
+  }
+
+
+  public getHeroes(): void {
+    this.employeeService.getHeroes().subscribe(
+      (response: Hero[]) => {
+        this.heroes = response;
+        this.list = response;
+        this.countpart=response.length;
+        console.log(this.heroes);
+      },
+      (error: HttpErrorResponse) => {
+        console.log(error.message);
+      }
+    );
+
+  }
+
+
+  // public getname(): void {
+  //   this.employeeService.getname().subscribe(
+  //     (response: String[]) => {
+  //       this.names = response;
+  //       // this.list = response;
+  //       this.countpart=response.length;
+  //       console.log(this.heroes);
+  //     },
+  //     (error: HttpErrorResponse) => {
+  //       console.log(error.message);
+  //     }
+  //   );
+  //
+  // }
+
+
+
+
+
+
+  public onOpenModal(hero: Hero, mode: string): void {
+    const container = document.getElementById('main-container');
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.style.display = 'none';
+    button.setAttribute('data-toggle', 'modal');
+    if (mode === 'add') {
+      button.setAttribute('data-target', '#addEmployeeModal');
+    }
+    container.appendChild(button);
+    button.click();
+  }
+
+
+  public onAddEmloyee(id: number): void {
+    console.log(this.list)
+    for (const hero of this.heroes) {
+      if (hero.id == id) {
+        this.heror = hero;
+        console.log(this.heror)
+      }
+    }
+    console.log(id)
+    this.employeeService.addHero(this.heror).subscribe(
+      (response: Herorep) => {
+        console.log(response);
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+
+
+
   public GenderMethod(val:number): void{
     console.log(val);
     const results: Hero[] = [];
@@ -67,6 +164,7 @@ export class HomeComponent implements OnInit {
       }
     }
     this.heroes = results;
+
     this.countpart=results.length;
 
     if (!val) {
@@ -142,20 +240,7 @@ export class HomeComponent implements OnInit {
 
 
 
-  public getHeroes(): void {
-    this.employeeService.getHeroes().subscribe(
-      (response: Hero[]) => {
-        this.heroes = response;
-        this.list = response;
-        this.countpart=response.length;
-        console.log(this.heroes);
-      },
-      (error: HttpErrorResponse) => {
-        console.log(error.message);
-      }
-    );
 
-  }
 
   public searchEmployees(key: string): void {
     console.log(key);

@@ -1,11 +1,20 @@
 
-<div class="container2" ><button type="button" class="btn btn-secondary" (click)="showAll()" style="font-family: Montserrat">
+<div class="container2" >
+  <form class="form-inline my-2 my-lg-0">
+    <input type="search" (ngModelChange)="searchEmployees(key.value)"
+           #key="ngModel" ngModel name="key" id="searchName"
+           class="form-control mr-sm-2" placeholder="Search heroes..." required>
+  </form>
+  <button type="button" class="btn btn-secondary" (click)="showAll()" style="font-family: Montserrat">
   Learn more about all heroes</button>
 </div>
 <br>
 <div class="container2"><a class="navbar-brand" style="color:white; font-family: 'Montserrat';
         font-size: x-large;font-weight: normal"> Количество героев на странице: {{this.countpart}} </a>
 </div>
+<!--<div *ngFor="let nam of names"class="container2"><a class="navbar-brand" style="color:white; font-family: 'Montserrat';-->
+<!--        font-size: x-large;font-weight: normal"> Названия: {{this.nam}} </a>-->
+<!--</div>-->
 <div class="container2">
   <a class="navbar-brand" style="color:white; font-family: 'Montserrat'; font-size: x-large;font-weight: normal">Gender: </a>
 
@@ -52,10 +61,32 @@
         </div>
 
 
-
-        <div class="container" >
-          <button type="button" class="btn btn-secondary" (click)="open(content1)" style="font-family: Montserrat"> Learn more about hero</button>
+        <div  >
+          <ul class="navbar-nav mr-auto">
+          <li class="nav-item nav-link"><button type="button" class="button" style="vertical-align:middle" (click)="open(content1)" >
+            <span> Learn more about hero</span></button></li>
+          <li class="nav-item nav-link"><button type="button" class="button" style="vertical-align:middle" (click)="open(content2)" >
+            <span>Add hero</span></button></li>
+          </ul>
         </div>
+            <ng-template #content2 let-modal >
+              <div class="modal-header">
+                <h4 class="modal-title" >{{hero.name}}</h4>
+                <button type="button" class="close" aria-label="Close"
+                        (click)="modal.dismiss('Cross click')">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p>Are you sure you want to add hero  {{hero.name}}?</p>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary"  (click)="modal.dismiss('Cross click')">No</button>
+                  <button (click)="addHero(hero.id)" class="btn btn-danger" (click)="modal.dismiss('Cross click')">Yes</button>
+                </div>
+              </div>
+
+            </ng-template>
+
         <br>
         <ng-template #content1 let-modal>
           <div class="modal-header">
@@ -90,7 +121,30 @@
           </ul>
         </div>
       </div>
+
+
+      < input n
+
+
+      <div class="modal fade" id="addEmployeeModal" tabindex="-1" role="dialog" aria-labelledby="addEmployeeModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="addEmployeeModalLabel">Delete hero</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>Are you sure you want to add hero  {{hero.name}}?</p>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                <button (click)="addHero(hero.id)" class="btn btn-danger" data-dismiss="modal">Yes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-

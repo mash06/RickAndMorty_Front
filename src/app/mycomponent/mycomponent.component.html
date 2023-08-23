@@ -1,21 +1,45 @@
 
+<div class="container2" >
+  <form class="form-inline my-2 my-lg-0">
+    <input type="search" (ngModelChange)="searchEpisode(key.value)"
+           #key="ngModel" ngModel name="key" id="searchName"
+           class="form-control mr-sm-2" placeholder="Search episodes..." required>
+  </form>
+            <button type="button" class="btn btn-secondary" (click)="showAll()" style="font-family: Montserrat">
+              Learn more about all episodes</button>
+</div>
+<br>
+
 <div class="container" id="main-container">
   <div  class="row">
     <div *ngFor="let episode of episodes" class="col-md-4" >
       <div class="card m-b-30"  >
         <div class="card-body row">
           <div class="col-6">
-
+            <div class="modalContent modalToggle">
+              <button class="btn btn-outline-primary" (click)="open(content)" >
+                <img src="https://mobimg.b-cdn.net/v3/fetch/5c/5c77bbf0660eca8ba6b4b6b497f3121a.jpeg?w=1470&r=0.5625" alt="" class="img-fluid  w-80"></button>
+              <ng-template #content let-modal>
+                <div class="modal-header">
+                  <h4 class="modal-title" id="modal-basic-title">{{episode.name}}</h4>
+                  <button type="button" class="close" aria-label="Close"
+                          (click)="modal.dismiss('Cross click')">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <img src="https://mobimg.b-cdn.net/v3/fetch/5c/5c77bbf0660eca8ba6b4b6b497f3121a.jpeg?w=1470&r=0.5625" alt="">
+              </ng-template>
+            </div>
           </div>
           <div class="col-6 card-title align-self-center mb-0">
             <h5><a>{{episode?.name}}</a></h5>
           </div>
         </div>
 
-
-
         <div class="container" >
-          <button type="button" class="btn btn-secondary" (click)="open(content1)"> Learn more about episode</button>
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item nav-link"><button type="button" class="button" style="vertical-align:middle" (click)="open(content1)" ><span> Learn more about hero</span></button></li>
+          </ul>
         </div>
         <br>
         <ng-template #content1 let-modal>
@@ -30,7 +54,6 @@
             <li class="list-group-item" ><i class="fa fa-envelope float-left"></i> <font style="font-weight:bold">Air date :</font>  {{episode?.air_date}}</li>
             <li class="list-group-item"><i class="fa fa-envelope float-left"></i> <font style="font-weight:bold">Episode :</font>  {{episode?.episode}}</li>
             <li class="list-group-item"><i class="fa fa-phone float-left"></i><font style="font-weight:bold">Created :</font> {{episode?.created}}</li>
-            <li class="list-group-item"><i class="fa fa-phone float-left"></i><font style="font-weight:bold">Characters :</font> {{episode?.characters}}</li>
             <li>
           </ul>
         </ng-template>

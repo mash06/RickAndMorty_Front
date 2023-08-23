@@ -11,4 +11,3 @@ export interface Hero {
   created: string;
   showOnScreen : boolean;
 }
-

@@ -1,12 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
-// import { EmployeeService } from './home/employee.service';
-// import { HttpErrorResponse } from '@angular/common/http';
-// import {Hero} from './home/hero';
-// import {ModalDismissReasons,NgbModal} from '@ng-bootstrap/ng-bootstrap';
-// import {GenderInterface} from './home/interfaces/gender.interface';
-// import {StatusInterface} from './home/interfaces/status.interface';
-// import {SpeciesInterface} from './home/interfaces/species.interface';
+import { EmployeeService } from './home/employee.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import {Hero} from './home/hero';
 
 @Component({
   selector: 'app-root',
@@ -14,19 +10,19 @@ import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  // public heroes: Hero[];
-  // public list: Hero[];
-  // closeResult:String;
-  // constructor(
-  //   private modalService:NgbModal,
-  //   private employeeService: EmployeeService){}
+  public heroes: Hero[];
+  public list: Hero[];
+  closeResult:String;
+  constructor(
+    private modalService:NgbModal,
+    private employeeService: EmployeeService){}
+
+   ngOnInit() {
+    this.getHeroes();
+    this.heroes.forEach(hero => hero.showOnScreen = false);
+    console.log(this.heroes)
   //
-  //  ngOnInit() {
-  //   this.getHeroes();
-  //   this.heroes.forEach(hero => hero.showOnScreen = false);
-  //   console.log(this.heroes)
-  // //
-  //  }
+   }
   // open(content) {
   //   this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
   //     this.closeResult = `Closed with: ${result}`;
@@ -143,52 +139,29 @@ export class AppComponent {
   //
   //
   //
-  // public getHeroes(): void {
-  //   this.employeeService.getHeroes().subscribe(
-  //     (response: Hero[]) => {
-  //       this.heroes = response;
-  //       this.list = response;
-  //       //this.countpart=response.length;
-  //       console.log(this.heroes);
-  //     },
-  //     (error: HttpErrorResponse) => {
-  //       console.log(error.message);
-  //     }
-  //   );
+  public getHeroes(): void {
+    this.employeeService.getHeroes().subscribe(
+      (response: Hero[]) => {
+        this.heroes = response;
+        this.list = response;
+        //this.countpart=response.length;
+        console.log(this.heroes);
+      },
+      (error: HttpErrorResponse) => {
+        console.log(error.message);
+      }
+    );
+
+  }
   //
-  // }
-  //
-  // public searchEmployees(key: string): void {
-  //   console.log(key);
-  //
-  //   const results: Hero[] = [];
-  //   for (const hero of this.heroes) {
-  //     if (hero.name.toLowerCase().indexOf(key.toLowerCase()) !== -1
-  //     || hero.status.toLowerCase().indexOf(key.toLowerCase()) !== -1
-  //     || hero.origin.toLowerCase().indexOf(key.toLowerCase()) !== -1
-  //     || hero.gender.toLowerCase().indexOf(key.toLowerCase()) !== -1) {
-  //       results.push(hero);
-  //     }
-  //   }
-  //   this.heroes = results;
-  //   //this.countpart=results.length;
-  //   if (results.length === 0 || !key) {
-  //     this.getHeroes();
-  //
-  //   }
-  // }
-  //
+
+
 
 
   // public showAll() {
   //   this.heroes.forEach(hero => hero.showOnScreen = !hero.showOnScreen)
   // }
 
-  closeResult:String;
-  constructor(
-    private modalService:NgbModal){}
-  ngOnInit(): void {
-  }
 
   open(content) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {

@@ -12,16 +12,14 @@ import {RouterModule} from '@angular/router';
 import {HomeComponent} from './home/home.component';
 import {LocationComponent} from './Location/Location.component';
 import {LocationService} from './Location/location.service';
-import {UserComponent} from './user/user.component';
-import {LoginComponent} from './login/login.component';
+import {FavoriteComponent} from './favorite/favorite.component';
 
 
 const routes = [
   { path: '', component: HomeComponent},
   { path: 'episode', component: MycomponentComponent},
   { path: 'location', component: LocationComponent},
-  { path: 'user', component: UserComponent},
-  { path: 'login', component: LoginComponent},
+  { path: 'db-heroes', component: FavoriteComponent},
 ]
 
 
@@ -32,8 +30,7 @@ const routes = [
     HomeComponent,
     MycomponentComponent,
     LocationComponent,
-    UserComponent,
-    LoginComponent
+    FavoriteComponent
   ],
   imports: [
     BrowserModule,
@@ -41,6 +38,6 @@ const routes = [
     RouterModule.forRoot(routes)
   ],
   providers: [EmployeeService,EpisodeService,LocationService],
-  bootstrap: [AppComponent,MycomponentComponent, LocationComponent, UserComponent,LoginComponent]
+  bootstrap: [AppComponent,MycomponentComponent, LocationComponent, FavoriteComponent]
 })
 export class AppModule { }
